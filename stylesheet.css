@@ -31,6 +31,7 @@ h1{
     width: 115px;
     margin: 5px;
     background-color: grey;
+    font-size: x-large;
 }
 #buttonContainer {
     --grid-cols: 1;
