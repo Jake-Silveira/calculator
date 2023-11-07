@@ -133,13 +133,13 @@ function operate(inputOne, inputTwo){
     const secondNumber = parseFloat(inputTwo);
 
     if(operator == '+'){
-        input.textContent = firstNumber + secondNumber;
+        input.textContent = Math.round((firstNumber + secondNumber) * 100) /100;
     } else if(operator == '-'){
-        input.textContent = firstNumber - secondNumber;
+        input.textContent = Math.round((firstNumber - secondNumber) * 100) /100;
     } else if(operator == '*'){
-        input.textContent = firstNumber * secondNumber;
+        input.textContent = Math.round((firstNumber * secondNumber) * 100) /100;
     } else if(operator == '/'){
-        input.textContent = firstNumber / secondNumber;
+        input.textContent = Math.round((firstNumber / secondNumber) * 100) /100;
     } else console.log('there was an error..' + firstNumber + secondNumber + operator);
 
 
