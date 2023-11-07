@@ -1,5 +1,8 @@
 const buttonContainer = document.getElementById('buttonContainer');
-
+const enterBtn = document.querySelector('#Btnenter');
+const gridArray = [];
+const operatorArray = [];
+operatorArray.push(enterBtn.id);
 
 function makeRows(rows, cols){
     buttonContainer.style.setProperty('--grid-rows', rows);
@@ -13,34 +16,101 @@ function makeRows(rows, cols){
         cell.style.padding = '20px';
         if(c <= 2){
             cell.textContent = c + 1;
+            gridArray.push(cell.id);
         };
         if(c === 3){
             cell.textContent = '/';
+            operatorArray.push(cell.id);
         };
         if(c >= 4 && c <= 6){
             cell.textContent = c;
+            gridArray.push(cell.id);
         };
         if(c === 7){
             cell.textContent = '*';
+            operatorArray.push(cell.id);
         };
         if(c >= 8 && c <= 10){
             cell.textContent = c - 1;
+            gridArray.push(cell.id);
         };
         if(c === 11){
             cell.textContent = '+';
+            operatorArray.push(cell.id);
         };
         if(c === 12){
             cell.textContent = 'CLEAR';
         };
         if(c === 13){
             cell.textContent = 0;
+            gridArray.push(cell.id);
         };
         if(c === 14){
             cell.textContent = ".";
         };
         if(c === 15){
             cell.textContent = '-';
+            operatorArray.push(cell.id);
         };
     };
 };
 makeRows(4,4);
+console.log(gridArray);
+console.log(operatorArray);
+
+
+const buttons = document.querySelectorAll('.grid-item');
+const input = document.querySelector('.input');
+var operator = '';
+var entryOne = 0;
+var entryTwo = 0;
+
+      buttons.forEach(function(button) {
+        button.addEventListener("click", function(){
+            if(input.textContent.length < 7 && gridArray.find((buttonId) => button.id == buttonId)){
+                input.textContent = input.textContent + button.textContent;
+            };
+            if(input.textContent.length < 7 && button.id == 'grid-item14'){
+                if(!input.textContent.includes('.')){
+                    input.textContent = input.textContent + button.textContent
+                };
+            };
+            if(button.id == 'grid-item12'){
+                input.textContent = "";
+                    entryOne = 0;
+                    entryTwo = 0;
+            };
+            if(button.id == 'grid-item3'){
+                operator = '/';
+                entryOne = input.textContent;
+                input.textContent = "";
+            }
+            if(button.id == 'grid-item7'){
+                operator = '*';
+                entryOne = input.textContent
+                input.textContent = "";
+            }
+            if(button.id == 'Btnenter' && !entryOne == 0){
+                entryTwo = input.textContent;
+                operate(entryOne, entryTwo);
+            };
+        });
+      });
+
+function operate(inputOne, inputTwo){
+    const firstNumber = parseInt(inputOne);
+    const secondNumber = parseInt(inputTwo);
+
+    if(operator == '+'){
+        input.textContent = firstNumber + secondNumber;
+    } else if(operator == '-'){
+        input.textContent = firstNumber - secondNumber;
+    } else if(operator == '*'){
+        input.textContent = firstNumber * secondNumber;
+    } else if(operator == '/'){
+        input.textContent = firstNumber / secondNumber;
+    } else console.log('there was an error..' + firstNumber + secondNumber + operator);
+
+
+    
+};

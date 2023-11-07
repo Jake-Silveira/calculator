@@ -23,15 +23,9 @@ h1{
     margin: 5px;
 }
 .enterBtn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
     height: 110px;
     width: 115px;
-    margin: 5px;
     background-color: grey;
-    font-size: x-large;
 }
 #buttonContainer {
     --grid-cols: 1;
