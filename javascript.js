@@ -55,8 +55,6 @@ function makeRows(rows, cols){
     };
 };
 makeRows(4,4);
-console.log(gridArray);
-console.log(operatorArray);
 
 
 const buttons = document.querySelectorAll('.grid-item');
@@ -82,24 +80,57 @@ var entryTwo = 0;
             };
             if(button.id == 'grid-item3'){
                 operator = '/';
+                if(!entryOne == 0 && !input.textContent == ""){
+                    entryOne = parseFloat(entryOne) + parseFloat(input.textContent);
+                }else if(!entryOne == 0 && input.textContent == ""){
+                    
+                }else
                 entryOne = input.textContent;
                 input.textContent = "";
-            }
+            };
             if(button.id == 'grid-item7'){
                 operator = '*';
-                entryOne = input.textContent
+                if(!entryOne == 0 && !input.textContent == ""){
+                    entryOne = parseFloat(entryOne) + parseFloat(input.textContent);
+                }else if(!entryOne == 0 && input.textContent == ""){
+                    
+                }else
+                entryOne = input.textContent;
                 input.textContent = "";
+            };
+            if(button.id == 'grid-item11'){
+                operator = '+';
+                if(!entryOne == 0 && !input.textContent == ""){
+                    entryOne = parseFloat(entryOne) + parseFloat(input.textContent);
+                }else if(!entryOne == 0 && input.textContent == ""){
+                    
+                }else
+                entryOne = input.textContent;
+                input.textContent = "";
+            };
+            if(button.id == 'grid-item15'){
+                operator = '-';
+                if(!entryOne == 0 && !input.textContent == ""){
+                    entryOne = parseFloat(entryOne) + parseFloat(input.textContent);
+                } else if(!entryOne == 0 && input.textContent == ""){
+                    
+                } else
+                entryOne = input.textContent;
+                input.textContent = "";
+                
             }
-            if(button.id == 'Btnenter' && !entryOne == 0){
-                entryTwo = input.textContent;
-                operate(entryOne, entryTwo);
+            if(button.id == 'Btnenter' && !entryOne == 0 && input.textContent.length <=7){
+                if(!input.textContent == ""){
+                    entryTwo = input.textContent;
+                    operate(entryOne, entryTwo);
+                };
             };
         });
       });
 
 function operate(inputOne, inputTwo){
-    const firstNumber = parseInt(inputOne);
-    const secondNumber = parseInt(inputTwo);
+    const firstNumber = parseFloat(inputOne);
+    const secondNumber = parseFloat(inputTwo);
 
     if(operator == '+'){
         input.textContent = firstNumber + secondNumber;
