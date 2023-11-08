@@ -139,7 +139,10 @@ function operate(inputOne, inputTwo){
     } else if(operator == '*'){
         input.textContent = Math.round((firstNumber * secondNumber) * 100) /100;
     } else if(operator == '/'){
-        input.textContent = Math.round((firstNumber / secondNumber) * 100) /100;
+        if(secondNumber == 0){
+            alert('YOU TRIED TO DIVIDE BY ZERO!');
+            input.textContent = "Dunce";
+        }else input.textContent = Math.round((firstNumber / secondNumber) * 100) /100;
     } else console.log('there was an error..' + firstNumber + secondNumber + operator);
 
 
